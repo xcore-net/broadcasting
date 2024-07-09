@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\notification;
+use App\Http\Controllers\RTCController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,7 @@ Route::post('/event', function (Request $request) {
     event(new notification($message));
     return response()->json($message);
 });
+
+Route::get('/rtc',[RTCController::class,'index']);
+Route::post('/rtc/auth',[RTCController::class,'auth']);
+
